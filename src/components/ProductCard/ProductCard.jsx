@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { AuthContext } from '../../store/AuthProvider';
 
 import './ProductCard.scss';
 import BuyProductForm from '../BuyProductForm/BuyProductForm';
@@ -23,6 +24,8 @@ export const ProductCategories = ({ categories = [] }) => (
 );
 
 export const ProductCard = ({ updateCart, product, noForm = false }) => {
+    const { authenticated } = useContext(AuthContext);
+
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
     const [quantity, setQuantity] = useState(0);
@@ -63,7 +66,7 @@ export const ProductCard = ({ updateCart, product, noForm = false }) => {
                 <ProductRow className="row center" title="Price:" value={product.price} />
                 <ProductRow className="row center" title="In Stock:" value={product.in_stock} />
                 {product.categories && <ProductCategories categories={getCategories(product.categories)} />}
-                {!noForm && <BuyProductForm onSubmit={addToCart} onChange={handleQuantityChange} />}
+                {!noForm && authenticated && <BuyProductForm onSubmit={addToCart} onChange={handleQuantityChange} />}
                 {error && <div className="form-error">{error}</div>}
                 {success && <div className="form-success">{success}</div>}
             </div>
