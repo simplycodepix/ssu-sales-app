@@ -2,9 +2,8 @@ import axios from 'axios';
 import qs from 'querystring';
 import { USERS } from '../store/types';
 
-const localApiURL = `http://localhost:8045/api`;
-const apiURL = localApiURL;
-// const apiURL = `http://sales.god-development.com/api`;
+// const localApiURL = `http://localhost:8045/api`;
+const apiURL = `http://sales.god-development.com/api`;
 
 export const getProducts = async ({ limit, offset, interval }) => {
     const { data } = await axios.get(`${apiURL}/products/list?limit=${limit}&offset=${offset}&interval=${interval}`);
