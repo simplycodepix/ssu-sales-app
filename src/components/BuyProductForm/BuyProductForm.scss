@@ -1,0 +1,17 @@
+.product-form {
+    display: flex;
+    padding-top: 25px;
+    margin-top: 25px;
+    border-top: 1px solid rgba(grey, 0.3);
+    .form-group {
+        flex: 1;
+        input {
+            height: 40px;
+        }
+    }
+    .btn {
+        min-width: unset;
+        height: 40px;
+        margin: 0 0 0 15px;
+    }
+}
